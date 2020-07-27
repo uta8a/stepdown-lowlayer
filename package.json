@@ -1,0 +1,14 @@
+{
+  "name": "stepdown-lowlayer",
+  "version": "1.0.0",
+  "description": "lowlayerbook",
+  "scripts": {
+    "build": "honkit build book docs",
+    "serve": "honkit serve book docs"
+  },
+  "author": "uta8a",
+  "license": "MIT",
+  "devDependencies": {
+    "honkit": "^3.5.2"
+  }
+}
