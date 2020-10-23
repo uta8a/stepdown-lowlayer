@@ -9,6 +9,12 @@
   - (unsafeを使うけど)RustでOSを書く。完結はまだで現在もアップデートが頻繁に行われるが、Rust自体もアップデートされているのでそれに合わせてメンテされているのはよい。
   - legacy BIOSを使っているが、UEFIに変えるRoadmapもあり、rust-osdevで進行しているので今後に期待。
 
+## エミュレータ
+- Writing a RISC-V Emulator from Scratch in 10 Steps
+  - https://book.rvemu.app/
+  - 64bit RISC-V emulatorを作る
+  - 初回の Setup and Implement Two Instructions は仕様書を読みながらコード書いていく流れなのでとてもよいなと思いました
+
 ## Security
 - Exploitation Fundamentals
   - https://github.com/rung/training-exploit-fundamentals
