@@ -1,4 +1,4 @@
-# stackの構造を学ぶ
+# バッファオーバーフローしてみる
 - この章では、C言語で書かれたプログラムの脆弱性を通して、1章で見たメモリの構造のうち、スタックについての理解を深めます。
 
 ## 用語説明
@@ -39,19 +39,24 @@ $ checksec --kernel
   - ファイルへのパス
 - ASLR
   - OSの持つセキュリティ機構
+
 ```
 # ASLRをOFFにする
 $ sudo sysctl -w kernel.randomize_va_space=0
 # ASLRをONにする(演習が終わったら必ずONに戻してください)
 $ sudo sysctl -w kernel.randomize_va_space=2
 ```
+
 ### セキュリティ機構 goとの違い
+
 - goはコンパイラオプションをデフォルトにすると以下のようになる
+
 ```
 $ checksec --file=main
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH	Symbols		FORTIFY	Fortified	Fortifiable	FILE
 No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   2695 Symbols	  No	0		0		main
 ```
+
 - RELRO, STACK CANARY, PIEがオフ
 - これは、言語の方でメモリ周りの脆弱性が起こらないようにしているのでバイナリに保護機能はつけなくてよい、というgoの戦略に基づいたもの(goは脆弱！というわけではないことに注意)
 - しかし、cgo(C言語を使えるgolang), unsafe(rawポインタ操作を許す構文)を使った上でコンパイラオプションをそのままにしていると...？
@@ -68,11 +73,10 @@ No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RU
 - documentは https://pwntools.readthedocs.io/en/latest/index.html です。
 
 ## 簡単なバッファオーバーフローをやってみよう
-<!-- 
-TODO
+```
 ASLRオフ
 gdbの使い方
 RSPの書き換え
 skip rbp https://qiita.com/ssssssssok1/items/b8ffca6b68149812c335
 ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
- -->
+```

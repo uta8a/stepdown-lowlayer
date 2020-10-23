@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>step-2 · HonKit</title>
+        <title>アセンブリを書く · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.5.2">
@@ -107,7 +107,7 @@
                 <a href="../step-1/">
             
                     
-                    step-1
+                    アセンブリを読む
             
                 </a>
             
@@ -120,7 +120,7 @@
                 <a href="./">
             
                     
-                    step-2
+                    アセンブリを書く
             
                 </a>
             
@@ -133,7 +133,7 @@
                 <a href="../step-3/">
             
                     
-                    step-3
+                    ELFを読む
             
                 </a>
             
@@ -146,7 +146,7 @@
                 <a href="../step-4/">
             
                     
-                    step-4
+                    ELFを書く
             
                 </a>
             
@@ -159,7 +159,7 @@
                 <a href="../step-5/">
             
                     
-                    step-5
+                    スタックに慣れる
             
                 </a>
             
@@ -172,7 +172,7 @@
                 <a href="../step-6/">
             
                     
-                    step-6
+                    バッファオーバーフローしてみる
             
                 </a>
             
@@ -185,7 +185,7 @@
                 <a href="../step-7/">
             
                     
-                    step-7
+                    低レイヤガイドブック
             
                 </a>
             
@@ -223,7 +223,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >step-2</a>
+        <a href=".." >アセンブリを書く</a>
     </h1>
 </div>
 
@@ -240,20 +240,69 @@
                                 
                                 <h1 id="&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x66F8;&#x304F;">&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x66F8;&#x304F;</h1>
 <ul>
-<li>&#x3053;&#x306E;&#x7AE0;&#x3067;&#x306F;&#x3001;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x306E;&#x8AAD;&#x307F;&#x66F8;&#x304D;&#x306E;&#x300C;&#x66F8;&#x304D;&#x300D;&#x30D1;&#x30FC;&#x30C8;&#x3092;&#x901A;&#x3057;&#x3066;&#x6163;&#x308C;&#x3066;&#x3044;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x6BD4;&#x8F03;&#x7684;&#x7C21;&#x5358;&#x306A;&#x554F;&#x984C;&#x304C;&#x591A;&#x3044;&#x306E;&#x3067;&#x3001;&#x7D42;&#x308F;&#x3063;&#x305F;&#x4EBA;&#x306F;&#x81EA;&#x7531;&#x306B;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x66F8;&#x3044;&#x3066;&#x3001;MatterMost&#x306B;&#x300C;&#x3053;&#x3093;&#x306A;&#x3053;&#x3068;&#x3067;&#x304D;&#x305F;&#x3088;&#xFF01;&#x300D;&#x3068;&#x5831;&#x544A;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#x3068;&#x5B09;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;</li>
+<li>&#x3053;&#x306E;&#x7AE0;&#x3067;&#x306F;&#x3001;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x306E;&#x8AAD;&#x307F;&#x66F8;&#x304D;&#x306E;&#x300C;&#x66F8;&#x304D;&#x300D;&#x30D1;&#x30FC;&#x30C8;&#x3092;&#x901A;&#x3057;&#x3066;&#x6163;&#x308C;&#x3066;&#x3044;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#x3002;&#x6BD4;&#x8F03;&#x7684;&#x7C21;&#x5358;&#x306A;&#x306E;&#x3067;&#x3001;&#x7D42;&#x308F;&#x3063;&#x305F;&#x4EBA;&#x306F;&#x81EA;&#x7531;&#x306B;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x66F8;&#x3044;&#x3066;&#x3001;Mattermost&#x306B;&#x300C;&#x3053;&#x3093;&#x306A;&#x3053;&#x3068;&#x3067;&#x304D;&#x305F;&#x3088;&#xFF01;&#x300D;&#x3068;&#x5831;&#x544A;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#x3068;&#x5B09;&#x3057;&#x3044;&#x3067;&#x3059;&#x3002;</li>
 </ul>
 <h2 id="&#x5358;&#x7D14;&#x306A;&#x8DB3;&#x3057;&#x7B97;">&#x5358;&#x7D14;&#x306A;&#x8DB3;&#x3057;&#x7B97;</h2>
 <ul>
 <li><code>~/minicamp-files/step-1-1/main.s</code> &#x306E;&#x7A7A;&#x6B04;&#x3092;&#x57CB;&#x3081;&#x3066;&#x8DB3;&#x3057;&#x7B97;&#x3092;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
-<li>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x78BA;&#x304B;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;<pre><code class="lang-bash">$ gcc main.s -o main <span class="hljs-comment"># main&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x5B9F;&#x884C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x751F;&#x6210;</span>
+<li>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x78BA;&#x304B;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;</li>
+</ul>
+<pre><code class="lang-bash">$ gcc main.s -o main <span class="hljs-comment"># main&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x5B9F;&#x884C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x751F;&#x6210;</span>
 $ ./main <span class="hljs-comment"># &#x3053;&#x3053;&#x3067;eax&#x306B;&#x6700;&#x5F8C;&#x306B;&#x5165;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x304C;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x3057;&#x3066;return&#x3055;&#x308C;&#x308B;</span>
 $ <span class="hljs-built_in">echo</span> $? <span class="hljs-comment"># eax&#x306B;&#x5165;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x3092;&#x78BA;&#x8A8D;</span>
 </code></pre>
-</li>
+<ul>
+<li><code>echo $?</code> &#x3067;&#x6700;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x7D42;&#x4E86;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5F97;&#x3089;&#x308C;&#x308B;&#x306E;&#x3067;&#x305D;&#x308C;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</li>
 </ul>
 <h2 id="rpn&#x96FB;&#x5353;">RPN&#x96FB;&#x5353;</h2>
 <ul>
-<li>&#x89E3;&#x7B54;&#x306E;&#x4F8B; <a href="https://github.com/uta8a/code-playground/blob/master/rpn/src/x86_64.c" target="_blank">https://github.com/uta8a/code-playground/blob/master/rpn/src/x86_64.c</a></li>
+<li>&#x56DB;&#x5247;&#x6F14;&#x7B97;&#x3068;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x69CB;&#x9020;&#x306B;&#x6163;&#x308C;&#x3066;&#x3082;&#x3089;&#x3044;&#x305F;&#x3044;&#x306E;&#x3067;&#x96FB;&#x5353;&#x3092;&#x4F5C;&#x3063;&#x3066;&#x3082;&#x3089;&#x3044;&#x307E;&#x3059;</li>
+<li>&#x5927;&#x90E8;&#x5206;&#x4F5C;&#x3063;&#x3066;&#x3042;&#x308B;&#x306E;&#x3067;&#x3001;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x51FA;&#x529B;&#x90E8;&#x5206;&#x3092;&#x4F5C;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</li>
+<li>(&#x9006;&#x30DD;&#x30FC;&#x30E9;&#x30F3;&#x30C9;&#x8A18;&#x6CD5;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x5F8C;&#x308D;&#x306B;&#x7F6E;&#x304F;&#x3088;&#x3046;&#x306A;&#x8868;&#x8A18;&#x306E;&#x4ED5;&#x65B9;&#x3092;&#x8A00;&#x3044;&#x307E;&#x3059;&#x3002;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x3068;&#x76F8;&#x6027;&#x304C;&#x3088;&#x3044;&#x3067;&#x3059;)</li>
+</ul>
+<pre><code class="lang-bash">1 1 + <span class="hljs-comment"># -&gt; 2</span>
+1 2 + 3 4 - + <span class="hljs-comment"># -&gt; 3 -1 + -&gt; 2</span>
+</code></pre>
+<ul>
+<li><code>~/minicamp-files/step-1-2/rpncalc.c</code> &#x306E;&#x7A7A;&#x6B04;&#x3092;&#x57CB;&#x3081;&#x3066;&#x9006;&#x30DD;&#x30FC;&#x30E9;&#x30F3;&#x30C9;&#x8A18;&#x6CD5;&#x3067;&#x306E;&#x5F15;&#x304D;&#x7B97;&#x3001;&#x639B;&#x3051;&#x7B97;&#x3001;&#x5272;&#x308A;&#x7B97;&#x3092;&#x5165;&#x529B;&#x3057;&#x305F;&#x3068;&#x304D;&#x306B;&#x305D;&#x308C;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x51FA;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;</li>
+</ul>
+<pre><code class="lang-bash">$ gcc rpncalc.c -o rpncalc
+$ ./rpncalc
+1 2 + 3 4 + +
+<span class="hljs-comment"># &#x3053;&#x3053;&#x3067;Ctrl+d&#x3059;&#x308B;&#x3068;&#x8A08;&#x7B97;&#x7D50;&#x679C;&#x304C;&#x51FA;&#x3066;&#x304F;&#x308B;</span>
+.intel_syntax noprefix
+.globl main
+main:
+  push 1
+  ...
+  ret
+[10] <span class="hljs-comment"># &lt;- &#x3053;&#x308C;&#x306F;stderr&#x306B;&#x51FA;&#x308B;</span>
+
+$ ./rpncalc &gt; rpn.s
+1 2 + 3 4 + +
+<span class="hljs-comment"># Ctrl+d</span>
+[10]
+$ cat rpn.s
+<span class="hljs-comment"># &#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;</span>
+$ gcc rpn.s
+$ ./rpn
+$ <span class="hljs-built_in">echo</span> $? <span class="hljs-comment"># &#x5024;&#x304C;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;</span>
+</code></pre>
+<ul>
+<li>&#x89E3;&#x7B54;&#x306E;&#x4F8B; <a href="https://github.com/uta8a/code-playground/blob/master/rpn/src/x86_64.c" target="_blank">https://github.com/uta8a/code-playground/blob/master/rpn/src/x86_64.c</a><ul>
+<li>&#x5272;&#x308A;&#x7B97;&#x304C;&#x5C11;&#x3057;&#x3080;&#x305A;&#x304B;&#x3057;&#x3044;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</li>
+<li>&#x4ED5;&#x69D8;&#x66F8;&#x304C;&#x5927;&#x4E8B;&#xFF01;&#x3068;&#x306F;&#x3044;&#x3048;&#x3001;&#x4ED5;&#x69D8;&#x66F8;&#x3060;&#x3051;&#x3067;&#x306F;&#x3069;&#x3046;&#x9032;&#x3081;&#x3070;&#x3044;&#x3044;&#x304B;&#x308F;&#x304B;&#x3089;&#x306A;&#x304F;&#x306A;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x3068;&#x304D;&#x306F;&#x3001;&#x5B9F;&#x969B;&#x306B;&#x66F8;&#x3044;&#x3066;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x305F;&#x7D50;&#x679C;&#x3092;&#x773A;&#x3081;&#x3066;&#x307F;&#x308B;&#x3068;&#x624B;&#x304C;&#x304B;&#x308A;&#x304C;&#x3064;&#x304B;&#x3081;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;&#x4ED5;&#x69D8;&#x66F8;&#x3092;&#x773A;&#x3081;&#x308B;&#x3001;&#x624B;&#x3092;&#x52D5;&#x304B;&#x3057;&#x3066;&#x5B9F;&#x7269;&#x3092;&#x8ABF;&#x3079;&#x308B;&#x3001;&#x3053;&#x306E;2&#x70B9;&#x304C;&#x5206;&#x304B;&#x308C;&#x3070;OK&#x3067;&#x3059;&#x3002;(&#x3053;&#x306E;&#x3078;&#x3093;&#x304C;&#x3001;&#x5B9F;&#x6A5F;&#x304C;&#x5927;&#x4E8B;&#x3068;&#x8A00;&#x308F;&#x308C;&#x308B;&#x7406;&#x7531;&#x306A;&#x306E;&#x304B;&#x306A;&#x3068;&#x601D;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;)</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x7D42;&#x308F;&#x3063;&#x305F;&#x3089;&#xFF1F;">&#x7D42;&#x308F;&#x3063;&#x305F;&#x3089;...&#xFF1F;</h2>
+<ul>
+<li>&#x3044;&#x308D;&#x3044;&#x308D;&#x66F8;&#x3044;&#x3066;&#x307F;&#x308B;&#x3053;&#x3068;&#x304C;&#x5927;&#x4E8B;&#x306A;&#x306E;&#x3067;&#x3001;&#x30A2;&#x30BB;&#x30F3;&#x30D6;&#x30EA;&#x3092;&#x3044;&#x308D;&#x3044;&#x308D;&#x66F8;&#x3044;&#x3066;&#x307F;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x3053;&#x3093;&#x306A;&#x3053;&#x3068;&#x3067;&#x304D;&#x307E;&#x3057;&#x305F;&#xFF01;&#x307F;&#x305F;&#x3044;&#x306A;&#x306E;&#x3092;Mattermost&#x3067;&#x5831;&#x544A;&#x3057;&#x3066;&#x307F;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</li>
+<li>&#x4F8B;<ul>
+<li>RPN&#x96FB;&#x5353;&#x306B;&#x65B0;&#x3057;&#x3044;&#x6F14;&#x7B97;&#x5B50;(xor&#x3068;&#x304B;)&#x3092;&#x5C0E;&#x5165;&#x3057;&#x3066;&#x307F;&#x308B;</li>
+<li>write&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x547C;&#x3073;&#x51FA;&#x3057;&#x3066;&#x3001;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3067;&#x304D;&#x306A;&#x3044;&#x304B;&#x8003;&#x3048;&#x3066;&#x307F;&#x308B;</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -282,12 +331,12 @@ $ <span class="hljs-built_in">echo</span> $? <span class="hljs-comment"># eax&#x
 
             
                 
-                <a href="../step-1/" class="navigation navigation-prev " aria-label="Previous page: step-1">
+                <a href="../step-1/" class="navigation navigation-prev " aria-label="Previous page: アセンブリを読む">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../step-3/" class="navigation navigation-next " aria-label="Next page: step-3">
+                <a href="../step-3/" class="navigation navigation-next " aria-label="Next page: ELFを読む">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -298,7 +347,7 @@ $ <span class="hljs-built_in">echo</span> $? <span class="hljs-comment"># eax&#x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"step-2","level":"1.3","depth":1,"next":{"title":"step-3","level":"1.4","depth":1,"path":"step-3/README.md","ref":"./step-3/README.md","articles":[]},"previous":{"title":"step-1","level":"1.2","depth":1,"path":"step-1/README.md","ref":"./step-1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-2/README.md","mtime":"2020-10-23T05:39:12.560Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-23T05:39:27.791Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"アセンブリを書く","level":"1.3","depth":1,"next":{"title":"ELFを読む","level":"1.4","depth":1,"path":"step-3/README.md","ref":"./step-3/README.md","articles":[]},"previous":{"title":"アセンブリを読む","level":"1.2","depth":1,"path":"step-1/README.md","ref":"./step-1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-2/README.md","mtime":"2020-10-23T13:04:59.612Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-23T16:07:51.884Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

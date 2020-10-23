@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>step-6 · HonKit</title>
+        <title>バッファオーバーフローしてみる · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.5.2">
@@ -107,7 +107,7 @@
                 <a href="../step-1/">
             
                     
-                    step-1
+                    アセンブリを読む
             
                 </a>
             
@@ -120,7 +120,7 @@
                 <a href="../step-2/">
             
                     
-                    step-2
+                    アセンブリを書く
             
                 </a>
             
@@ -133,7 +133,7 @@
                 <a href="../step-3/">
             
                     
-                    step-3
+                    ELFを読む
             
                 </a>
             
@@ -146,7 +146,7 @@
                 <a href="../step-4/">
             
                     
-                    step-4
+                    ELFを書く
             
                 </a>
             
@@ -159,7 +159,7 @@
                 <a href="../step-5/">
             
                     
-                    step-5
+                    スタックに慣れる
             
                 </a>
             
@@ -172,7 +172,7 @@
                 <a href="./">
             
                     
-                    step-6
+                    バッファオーバーフローしてみる
             
                 </a>
             
@@ -185,7 +185,7 @@
                 <a href="../step-7/">
             
                     
-                    step-7
+                    低レイヤガイドブック
             
                 </a>
             
@@ -223,7 +223,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >step-6</a>
+        <a href=".." >バッファオーバーフローしてみる</a>
     </h1>
 </div>
 
@@ -238,7 +238,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="stack&#x306E;&#x69CB;&#x9020;&#x3092;&#x5B66;&#x3076;">stack&#x306E;&#x69CB;&#x9020;&#x3092;&#x5B66;&#x3076;</h1>
+                                <h1 id="&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x3057;&#x3066;&#x307F;&#x308B;">&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x3057;&#x3066;&#x307F;&#x308B;</h1>
 <ul>
 <li>&#x3053;&#x306E;&#x7AE0;&#x3067;&#x306F;&#x3001;C&#x8A00;&#x8A9E;&#x3067;&#x66F8;&#x304B;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x8106;&#x5F31;&#x6027;&#x3092;&#x901A;&#x3057;&#x3066;&#x3001;1&#x7AE0;&#x3067;&#x898B;&#x305F;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x69CB;&#x9020;&#x306E;&#x3046;&#x3061;&#x3001;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306B;&#x3064;&#x3044;&#x3066;&#x306E;&#x7406;&#x89E3;&#x3092;&#x6DF1;&#x3081;&#x307E;&#x3059;&#x3002;</li>
 </ul>
@@ -293,18 +293,22 @@ $ checksec --kernel
 </ul>
 </li>
 <li>ASLR<ul>
-<li>OS&#x306E;&#x6301;&#x3064;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;<pre><code># ASLR&#x3092;OFF&#x306B;&#x3059;&#x308B;
+<li>OS&#x306E;&#x6301;&#x3064;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;</li>
+</ul>
+</li>
+</ul>
+<pre><code># ASLR&#x3092;OFF&#x306B;&#x3059;&#x308B;
 $ sudo sysctl -w kernel.randomize_va_space=0
 # ASLR&#x3092;ON&#x306B;&#x3059;&#x308B;(&#x6F14;&#x7FD2;&#x304C;&#x7D42;&#x308F;&#x3063;&#x305F;&#x3089;&#x5FC5;&#x305A;ON&#x306B;&#x623B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;)
 $ sudo sysctl -w kernel.randomize_va_space=2
 </code></pre><h3 id="&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;-go&#x3068;&#x306E;&#x9055;&#x3044;">&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB; go&#x3068;&#x306E;&#x9055;&#x3044;</h3>
-</li>
+<ul>
+<li>go&#x306F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306B;&#x3059;&#x308B;&#x3068;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;</li>
 </ul>
-</li>
-<li>go&#x306F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306B;&#x3059;&#x308B;&#x3068;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;<pre><code>$ checksec --file=main
+<pre><code>$ checksec --file=main
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH    Symbols        FORTIFY    Fortified    Fortifiable    FILE
 No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   2695 Symbols      No    0        0        main
-</code></pre></li>
+</code></pre><ul>
 <li>RELRO, STACK CANARY, PIE&#x304C;&#x30AA;&#x30D5;</li>
 <li>&#x3053;&#x308C;&#x306F;&#x3001;&#x8A00;&#x8A9E;&#x306E;&#x65B9;&#x3067;&#x30E1;&#x30E2;&#x30EA;&#x5468;&#x308A;&#x306E;&#x8106;&#x5F31;&#x6027;&#x304C;&#x8D77;&#x3053;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x306B;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x3064;&#x3051;&#x306A;&#x304F;&#x3066;&#x3088;&#x3044;&#x3001;&#x3068;&#x3044;&#x3046;go&#x306E;&#x6226;&#x7565;&#x306B;&#x57FA;&#x3065;&#x3044;&#x305F;&#x3082;&#x306E;(go&#x306F;&#x8106;&#x5F31;&#xFF01;&#x3068;&#x3044;&#x3046;&#x308F;&#x3051;&#x3067;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;)</li>
 <li>&#x3057;&#x304B;&#x3057;&#x3001;cgo(C&#x8A00;&#x8A9E;&#x3092;&#x4F7F;&#x3048;&#x308B;golang), unsafe(raw&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x64CD;&#x4F5C;&#x3092;&#x8A31;&#x3059;&#x69CB;&#x6587;)&#x3092;&#x4F7F;&#x3063;&#x305F;&#x4E0A;&#x3067;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x305D;&#x306E;&#x307E;&#x307E;&#x306B;&#x3057;&#x3066;&#x3044;&#x308B;&#x3068;...&#xFF1F;</li>
@@ -324,14 +328,12 @@ No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RU
 <li>document&#x306F; <a href="https://pwntools.readthedocs.io/en/latest/index.html" target="_blank">https://pwntools.readthedocs.io/en/latest/index.html</a> &#x3067;&#x3059;&#x3002;</li>
 </ul>
 <h2 id="&#x7C21;&#x5358;&#x306A;&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x3092;&#x3084;&#x3063;&#x3066;&#x307F;&#x3088;&#x3046;">&#x7C21;&#x5358;&#x306A;&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x3092;&#x3084;&#x3063;&#x3066;&#x307F;&#x3088;&#x3046;</h2>
-<!-- 
-TODO
-ASLRオフ
-gdbの使い方
-RSPの書き換え
+<pre><code>ASLR&#x30AA;&#x30D5;
+gdb&#x306E;&#x4F7F;&#x3044;&#x65B9;
+RSP&#x306E;&#x66F8;&#x304D;&#x63DB;&#x3048;
 skip rbp https://qiita.com/ssssssssok1/items/b8ffca6b68149812c335
 ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
- -->
+</code></pre>
                                 
                                 </section>
                             
@@ -358,12 +360,12 @@ ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
 
             
                 
-                <a href="../step-5/" class="navigation navigation-prev " aria-label="Previous page: step-5">
+                <a href="../step-5/" class="navigation navigation-prev " aria-label="Previous page: スタックに慣れる">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../step-7/" class="navigation navigation-next " aria-label="Next page: step-7">
+                <a href="../step-7/" class="navigation navigation-next " aria-label="Next page: 低レイヤガイドブック">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -374,7 +376,7 @@ ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"step-6","level":"1.7","depth":1,"next":{"title":"step-7","level":"1.8","depth":1,"path":"step-7/README.md","ref":"./step-7/README.md","articles":[]},"previous":{"title":"step-5","level":"1.6","depth":1,"path":"step-5/README.md","ref":"./step-5/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-6/README.md","mtime":"2020-10-22T07:12:20.028Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-23T05:39:27.791Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バッファオーバーフローしてみる","level":"1.7","depth":1,"next":{"title":"低レイヤガイドブック","level":"1.8","depth":1,"path":"step-7/README.md","ref":"./step-7/README.md","articles":[]},"previous":{"title":"スタックに慣れる","level":"1.6","depth":1,"path":"step-5/README.md","ref":"./step-5/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-6/README.md","mtime":"2020-10-23T16:06:24.028Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-23T16:07:51.884Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
