@@ -2,6 +2,36 @@
 - 筆者がやったことあるもの、ないものも載せています。
 - 僕の推しを載せています
 - なにかこれいいぞ！という教材あったらどなたでもMatterMostに書き込んでください。
+- 以下はminicamp環境に入っているツールです。 https://github.com/uta8a/minicamp-env でansibleで公開しています。
+
+```
+- ltrace
+- strace
+- vim
+- gdb
+- git
+- file
+- curl
+- wget
+- binutils
+- libssl-dev
+- build-essential
+- netcat
+- nasm
+- python3
+- python3-pip
+- python3-dev
+- ghex
+- radare2
+- docker.io
+- checksec
+- rp++
+- Rust
+- VSCode
+- socat
+- pwntools (pip3)
+- gdb-peda
+```
 
 ## OS
 - blog_os

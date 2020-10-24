@@ -272,10 +272,29 @@ $ checksec --kernel
 <!-- https://miso-24.hatenablog.com/entry/2019/10/16/021321 -->
 <h2 id="&#x4E3B;&#x306A;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;&#x306E;&#x8AAC;&#x660E;">&#x4E3B;&#x306A;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;&#x306E;&#x8AAC;&#x660E;</h2>
 <ul>
-<li>RELRO</li>
-<li>STACK CANARY</li>
-<li>NX</li>
+<li>RELRO<ul>
+<li>RELocation Read Only</li>
+<li>GOT&#x9818;&#x57DF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;Only&#x306B;&#x3059;&#x308B;<ul>
+<li>GOT&#x9818;&#x57DF;&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x308B;&#x3068;&#x5B09;&#x3057;&#x3044;</li>
+<li>GOT&#x9818;&#x57DF;&#x3068;&#x306F;&#xFF1F;<ul>
+<li>&#x5171;&#x6709;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x95A2;&#x6570;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x4E00;&#x89A7;&#x8868;&#x3002;</li>
+<li>&#x3053;&#x3053;&#x3092;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x308B;&#x3068;&#x4EFB;&#x610F;&#x95A2;&#x6570;&#x3078;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x5909;&#x66F4;&#x3057;&#x3066;&#x4EFB;&#x610F;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>STACK CANARY<ul>
+<li>&#x95A2;&#x6570;&#x5185;&#x3067;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306E;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x3092;&#x691C;&#x77E5;&#x3059;&#x308B;</li>
+</ul>
+</li>
+<li>NX<ul>
+<li>RIP&#x304C;&#x5909;&#x306A;&#x3068;&#x3053;&#x308D;&#x306B;&#x98DB;&#x3070;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;(text&#x9818;&#x57DF;&#x3060;&#x3051;&#x306E;&#x306F;&#x305A;)</li>
+</ul>
+</li>
 <li>PIE<ul>
+<li>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x914D;&#x7F6E;&#x3092;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306B;&#x3059;&#x308B; -&gt; text&#x9818;&#x57DF;&#x3082;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306B;&#x306A;&#x308B;</li>
 <li><code>lea    rdi, .LC0[rip]</code> &#x3068;&#x95A2;&#x9023;&#x3057;&#x3066;&#x3044;&#x308B;</li>
 <li><a href="https://qiita.com/0yoyoyo/items/85122f31ba8d14332e3d" target="_blank">https://qiita.com/0yoyoyo/items/85122f31ba8d14332e3d</a></li>
 </ul>
@@ -294,6 +313,7 @@ $ checksec --kernel
 </li>
 <li>ASLR<ul>
 <li>OS&#x306E;&#x6301;&#x3064;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x6A5F;&#x69CB;</li>
+<li>&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x3084;&#x30D2;&#x30FC;&#x30D7;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306B;&#x3059;&#x308B;</li>
 </ul>
 </li>
 </ul>
@@ -333,6 +353,7 @@ gdb&#x306E;&#x4F7F;&#x3044;&#x65B9;
 RSP&#x306E;&#x66F8;&#x304D;&#x63DB;&#x3048;
 skip rbp https://qiita.com/ssssssssok1/items/b8ffca6b68149812c335
 ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
+16byte align https://uchan.hateblo.jp/entry/2018/02/16/232029
 </code></pre>
                                 
                                 </section>
@@ -376,7 +397,7 @@ ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"バッファオーバーフローしてみる","level":"1.7","depth":1,"next":{"title":"低レイヤガイドブック","level":"1.8","depth":1,"path":"step-7/README.md","ref":"./step-7/README.md","articles":[]},"previous":{"title":"スタックに慣れる","level":"1.6","depth":1,"path":"step-5/README.md","ref":"./step-5/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-6/README.md","mtime":"2020-10-23T16:06:24.028Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-23T21:48:47.853Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バッファオーバーフローしてみる","level":"1.7","depth":1,"next":{"title":"低レイヤガイドブック","level":"1.8","depth":1,"path":"step-7/README.md","ref":"./step-7/README.md","articles":[]},"previous":{"title":"スタックに慣れる","level":"1.6","depth":1,"path":"step-5/README.md","ref":"./step-5/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"step-6/README.md","mtime":"2020-10-24T02:14:03.500Z","type":"markdown"},"gitbook":{"version":"3.5.2","time":"2020-10-24T02:14:27.084Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -24,9 +24,18 @@ $ checksec --kernel
 <!-- https://miso-24.hatenablog.com/entry/2019/10/16/021321 -->
 ## 主なセキュリティ機構の説明
 - RELRO
+  - RELocation Read Only
+  - GOT領域を読み込みOnlyにする
+    - GOT領域を書き換えると嬉しい
+    - GOT領域とは？
+      - 共有ライブラリ関数のアドレス一覧表。
+      - ここを書き換えると任意関数へのアドレスに変更して任意関数を実行できる
 - STACK CANARY
+  - 関数内でスタックのオーバーフローを検知する
 - NX
+  - RIPが変なところに飛ばないようにする(text領域だけのはず)
 - PIE
+  - プログラムの配置をランダムにする -> text領域もランダムになる
   - `lea	rdi, .LC0[rip]` と関連している
   - https://qiita.com/0yoyoyo/items/85122f31ba8d14332e3d
 - RPATH, RUNPATHはなにか？
@@ -39,6 +48,7 @@ $ checksec --kernel
   - ファイルへのパス
 - ASLR
   - OSの持つセキュリティ機構
+  - スタックやヒープのアドレスをランダムにする
 
 ```
 # ASLRをOFFにする
@@ -79,4 +89,5 @@ gdbの使い方
 RSPの書き換え
 skip rbp https://qiita.com/ssssssssok1/items/b8ffca6b68149812c335
 ret2esp http://www.intellilink.co.jp/article/column/ctf01.html
+16byte align https://uchan.hateblo.jp/entry/2018/02/16/232029
 ```
